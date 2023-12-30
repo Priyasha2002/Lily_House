@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lily_house/screens/auth/login.dart';
 import 'package:lily_house/screens/viewed_recently.dart';
 import 'package:lily_house/screens/wishlist_screen.dart';
 import 'package:lily_house/services/assets_manager.dart';
@@ -120,7 +121,9 @@ class ProfileScreen extends StatelessWidget {
 
                   Center(
                     child: ElevatedButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.pushNamed(context, LoginScreen.routeName);
+                      },
                       child: const Text(
                           "Login",
                         style: TextStyle(

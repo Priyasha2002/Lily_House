@@ -41,8 +41,7 @@ class _HomePageState extends State<HomePage> {
                         return
                             Image.asset(AppConstants.bannersImages[index],);
                       },
-        
-                        itemCount: AppConstants.bannersImages.length,
+                     itemCount: AppConstants.bannersImages.length,
                         autoplay: true,
                      pagination: const SwiperPagination(
                        alignment: Alignment.bottomCenter,

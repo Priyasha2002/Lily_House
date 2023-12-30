@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:lily_house/screens/auth/forgot_password.dart';
 import 'package:lily_house/screens/auth/register.dart';
 import 'package:lily_house/widgets/app_name_text.dart';
 import 'package:lily_house/widgets/auth/google_button.dart';
@@ -7,6 +8,7 @@ import 'package:lily_house/widgets/subtitles_text.dart';
 import 'package:lily_house/widgets/titles_text.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const routeName = '/LoginScreen';
   const LoginScreen({super.key});
 
   @override
@@ -141,7 +143,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             TextButton(
-                                  onPressed: (){},
+                                  onPressed: (){
+                                    Navigator.pushNamed(
+                                      context,
+                                      ForgotPasswordScreen.routeName,
+                                    );
+                                  },
                                   child: const SubtitleTextWidget(
                                     label: "Forgot Password",
                                     textDecoration: TextDecoration.underline,
