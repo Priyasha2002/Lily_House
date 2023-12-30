@@ -1,3 +1,4 @@
+import 'package:lily_house/models/category_models.dart';
 import 'package:lily_house/services/assets_manager.dart';
 
 class AppConstants {
@@ -8,5 +9,44 @@ class AppConstants {
     AssetsManager.bag_image,
     AssetsManager.bag2_image,
     AssetsManager.bag4_image
+  ];
+
+  static List<CategoryModel> categoriesList = [
+    CategoryModel(
+        id: "Handbags",
+        images: AssetsManager.hand_bag,
+        name: "Handbags"
+    ),
+    CategoryModel(
+        id: "Watches",
+        images: AssetsManager.watch,
+        name: "Watches"
+    ),
+    CategoryModel(
+        id: "Cosmetics",
+        images: AssetsManager.cosmetics,
+        name: "Cosmetics"
+    ),
+    CategoryModel(
+        id: "Laptops",
+        images: AssetsManager.pc,
+        name: "Laptops"
+    ),
+    CategoryModel(
+        id: "Fashion",
+        images: AssetsManager.fashion,
+        name: "Fashion"
+    ),
+    CategoryModel(
+        id: "Books",
+        images: AssetsManager.book,
+        name: "Books"
+    ),
+    CategoryModel(
+        id: "Shoes",
+        images: AssetsManager.shoes,
+        name: "Shoes"
+    ),
+
   ];
 }

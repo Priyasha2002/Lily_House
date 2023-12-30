@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:lily_house/consts/app_constants.dart';
 import 'package:lily_house/widgets/subtitles_text.dart';
+
+import '../../screens/product_details.dart';
 class LatestarrivalProductsWidget extends StatelessWidget {
   const LatestarrivalProductsWidget({super.key});
 
@@ -12,25 +14,24 @@ class LatestarrivalProductsWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: (){
-          print("object");
+        onTap: ()async{
+          Navigator.pushNamed(context, ProductDetails.routeName);
         },
         child: SizedBox(
-          width: size.width * 0.45,
+          width: size.width * 0.5,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Flexible(
-                child: ClipRRect(
+               ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: FancyShimmerImage(
                       imageUrl: AppConstants.productImageUrl,
-                    width: size.width * 0.3,
-                    height: size.height * 0.3,
+                    width: size.width * 0.25,
+                    height: size.height * 0.25,
                 
                   ),
                 ),
-              ),
+
               const SizedBox(
                 width: 7,
               ),
@@ -62,7 +63,7 @@ class LatestarrivalProductsWidget extends StatelessWidget {
                       ),
                       const FittedBox(
                         child: SubtitleTextWidget(
-                          label: "₹575",
+                          label: "₹3000",
                           color: Colors.blue,
                         ),
                       )

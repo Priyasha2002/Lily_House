@@ -54,7 +54,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   print(searchTextController.text);
                 },
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               Expanded(
                 child: DynamicHeightGridView(
                     builder: (context , index) {

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lily_house/screens/viewed_recently.dart';
+import 'package:lily_house/screens/wishlist_screen.dart';
 import 'package:lily_house/services/assets_manager.dart';
 import 'package:lily_house/widgets/app_name_text.dart';
 import 'package:lily_house/widgets/custom_list_tile.dart';
@@ -73,7 +75,7 @@ class ProfileScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TitleTextWidget(label: "General"),
+                  const TitleTextWidget(label: "General"),
                   CustomListTile(
                       imagePath: AssetsManager.orderSvg,
                       text: "All orders",
@@ -81,11 +83,15 @@ class ProfileScreen extends StatelessWidget {
                   CustomListTile(
                       imagePath: AssetsManager.wishlistSvg,
                       text: "Wishlist",
-                      function:(){}),
+                      function:(){
+                        Navigator.pushNamed(context, WishListScreen.routeName);
+                      }),
                   CustomListTile(
                       imagePath: AssetsManager.recent,
                       text: "Viewed Recently",
-                      function:(){}),
+                      function:(){
+                        Navigator.pushNamed(context, RecentlyViewedScreen.routeName);
+                      }),
                   CustomListTile(
                       imagePath: AssetsManager.address,
                       text: "Address",

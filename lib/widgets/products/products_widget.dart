@@ -2,6 +2,7 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:lily_house/consts/app_constants.dart';
+import 'package:lily_house/widgets/products/wishlist_button_widget.dart';
 import 'package:lily_house/widgets/subtitles_text.dart';
 import 'package:lily_house/widgets/titles_text.dart';
 class ProductWidget extends StatelessWidget {
@@ -30,13 +31,15 @@ class ProductWidget extends StatelessWidget {
               children: [
                 Flexible(
                   flex: 5,
-                    child: TitleTextWidget(label: "Title" *10)
-                ),
-                IconButton(
-                    onPressed: (){},
-                    icon: const Icon(
-                      IconlyLight.heart,
+                    child: TitleTextWidget(
+                        label: "Title" *10,
+                      maxLines: 2,
+                      fontSize: 18,
                     ),
+                ),
+                const Flexible(
+                  flex: 2,
+                  child: WishlistButtonWidget(),
                 )
               ],
             ),
