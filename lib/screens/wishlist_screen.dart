@@ -41,7 +41,9 @@ class _SearchScreenState extends State<WishListScreen> {
               Expanded(
                 child: DynamicHeightGridView(
                   builder: (context , index) {
-                    return ProductWidget();
+                    return const ProductWidget(
+                      productId: "",
+                    );
                   },
                   itemCount: 30,
                   crossAxisCount: 2,

@@ -1,14 +1,17 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lily_house/consts/app_constants.dart';
+import 'package:lily_house/consts/providers/product_provider.dart';
 import 'package:lily_house/services/assets_manager.dart';
 import 'package:lily_house/widgets/app_name_text.dart';
 import 'package:lily_house/widgets/products/wishlist_button_widget.dart';
 import 'package:lily_house/widgets/subtitles_text.dart';
 import 'package:lily_house/widgets/titles_text.dart';
+import 'package:provider/provider.dart';
 
 class ProductDetails extends StatefulWidget {
   static const routeName = "/ProductDetails";
+
   const ProductDetails({super.key});
 
   @override
@@ -19,6 +22,10 @@ class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final productProvider = Provider.of<ProductProvider>(context , listen: false);
+    final productId = ModalRoute.of(context)!.settings.arguments as String;
+    final getCurrentProduct = productProvider.findByProdId(productId);
+
     return Scaffold(
       appBar: AppBar(
         title: const AppNameTextWidget(
@@ -41,7 +48,7 @@ class _ProductDetailsState extends State<ProductDetails> {
         child: Column(
           children: [
             FancyShimmerImage(
-              imageUrl: AppConstants.productImageUrl,
+              imageUrl: getCurrentProduct!.productImage,
               height: size.height * 0.38,
               width:  double.infinity,
               boxFit: BoxFit.contain ,
@@ -58,7 +65,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     children: [
                       Flexible(
                           child: Text(
-                            "Title" * 5,
+                            getCurrentProduct.productTitle,
                             style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -68,8 +75,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                       const SizedBox(
                         width: 10,
                       ),
-                      const SubtitleTextWidget(
-                          label: "Rs 3000",
+                      SubtitleTextWidget(
+                          label: "${getCurrentProduct.productPrice}\$",
                         color: Colors.blue,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -120,17 +127,18 @@ class _ProductDetailsState extends State<ProductDetails> {
                   const SizedBox(
                     height: 25,
                   ),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TitleTextWidget(label: "Description of item :"),
-
+                      const TitleTextWidget(label: "Description of item :"),
+                      SubtitleTextWidget(label: getCurrentProduct.productCategory)
                     ],
                   ),
                   const SizedBox(
                     height: 25,
                   ),
-                  SubtitleTextWidget(label: "Product Dimensions (IN)-11.2, 4, 8.5 Closure Type - This hobo bag comes with a long removable and adjustable shoulder strap, which can be used as a women shoulder bag or hobo cross-body bag for women/Girls")
+                  SubtitleTextWidget(
+                      label:getCurrentProduct.productDescription),
                 ],
         
               ),

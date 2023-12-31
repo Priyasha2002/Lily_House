@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lily_house/widgets/subtitles_text.dart';
 import 'package:lily_house/widgets/titles_text.dart';
-
 import 'assets_manager.dart';
 
 class MyAppMethods{

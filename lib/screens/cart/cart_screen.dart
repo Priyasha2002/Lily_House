@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:lily_house/consts/providers/cart_provider.dart';
+import 'package:lily_house/consts/providers/cart_provider.dart';
 import 'package:lily_house/screens/cart/cart_bottom_checkout.dart';
 import 'package:lily_house/screens/cart/cart_widget.dart';
 import 'package:lily_house/widgets/empty_widget_bag.dart';
-import 'package:lily_house/widgets/subtitles_text.dart';
 import 'package:lily_house/widgets/titles_text.dart';
-
+import 'package:provider/provider.dart';
+import '../../consts/providers/cart_provider.dart';
+import '../../consts/providers/cart_provider.dart';
 import '../../services/assets_manager.dart';
-import '../../widgets/app_name_text.dart';
+
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
   final bool isEmpty = false;
 
   @override
   Widget build(BuildContext context) {
-    return isEmpty? Scaffold(
+    final cartProvider = Provider.of<CartProvider>(context);
+    return cartProvider.getCartItems.isEmpty
+        ? Scaffold(
       body: EmptyBagWidget(
         imagePath: AssetsManager.shoppingCart,
         title: "Your cart is empty",
@@ -31,14 +36,17 @@ class CartScreen extends StatelessWidget {
               ),
           ),
         ],
-        title: TitleTextWidget(label: "Cart(5)"),
+        title: TitleTextWidget(label: "${cartProvider.getCartItems.length}"),
         leading: Image.asset(AssetsManager.shoppingCart),
       ),
       body: ListView.builder(
-          itemCount: 30,
+          itemCount: cartProvider.getCartItems.length,
           itemBuilder: (context, index){
-            return const CartWidget();
-       },
+            return ChangeNotifierProvider.value(
+                value: cartProvider.getCartItems.values.toList()[index],
+                child :const CartWidget()
+            );
+            },
       ),
       bottomSheet: const CartBottomCheckout(),
     );

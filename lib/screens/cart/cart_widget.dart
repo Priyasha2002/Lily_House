@@ -1,17 +1,25 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:lily_house/consts/providers/product_provider.dart';
+import 'package:lily_house/models/cart_model.dart';
 import 'package:lily_house/screens/cart/quantity_bottom_sheet.dart';
 import 'package:lily_house/widgets/subtitles_text.dart';
 import 'package:lily_house/widgets/titles_text.dart';
+import 'package:provider/provider.dart';
 class CartWidget extends StatelessWidget {
   const CartWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cartModelProvider = Provider.of<CartModel>(context);
+    final productProvider = Provider.of<ProductProvider>(context);
+    final getCurrentProduct = productProvider.findByProdId(cartModelProvider.productId);
     Size size = MediaQuery.of(context).size;
-    return FittedBox(
-      child: IntrinsicWidth(
+    return getCurrentProduct == null
+        ? const SizedBox.shrink()
+        : FittedBox(
+        child: IntrinsicWidth(
         child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -19,12 +27,12 @@ class CartWidget extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(12),
                     child: FancyShimmerImage(
-                        imageUrl: "https://m.media-amazon.com/images/I/81Uaf69-v4L._SY535_.jpg",
+                        imageUrl: getCurrentProduct.productImage,
                       height: size.height * 0.2,
                       width: size.height * 0.2,
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   IntrinsicWidth(
                     child: Column(
                       children: [
@@ -33,7 +41,7 @@ class CartWidget extends StatelessWidget {
                             SizedBox(
                               width: size.width * 0.6,
                                 child: TitleTextWidget(
-                                  label: "Title" * 10,
+                                  label: getCurrentProduct.productTitle,
                                   maxLines: 2,
                                 ),
                             ),
@@ -58,8 +66,8 @@ class CartWidget extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            const SubtitleTextWidget(
-                              label: "₹575",
+                            SubtitleTextWidget(
+                              label: "${getCurrentProduct.productPrice}\$",
                               fontSize: 20,
                               color: Colors.blue,
                             ),
@@ -93,7 +101,7 @@ class CartWidget extends StatelessWidget {
                                 );
                                 },
                                 icon: const Icon(IconlyLight.arrowDown2),
-                                label:const Text("Qty : 6")
+                                label:Text("Qty : ${cartModelProvider.quantity}"),
                             ),
                           ],
                         ),
