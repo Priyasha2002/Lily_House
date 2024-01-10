@@ -60,6 +60,7 @@ class ProductProvider with ChangeNotifier {
       "https://i.ibb.co/nbwTvXQ/2-iphone13-mini-256gb-midnight.webp",
       productQuantity: "15",
     ),
+
     ProductModel(
       //3
       productId: 'Acheter un iPhone 14',
@@ -458,3 +459,7 @@ class ProductProvider with ChangeNotifier {
     ),
   ];
 }
+
+
+
+

@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:lily_house/models/cart_model.dart';
 import 'package:lily_house/widgets/subtitles_text.dart';
+import 'package:provider/provider.dart';
 
+import '../../consts/providers/cart_provider.dart';
 
 class QuantityBottomSheetWidget extends StatelessWidget {
-  const QuantityBottomSheetWidget({super.key});
+  final CartModel cartModel;
+  const QuantityBottomSheetWidget({super.key, required this.cartModel});
 
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context);
     return Column(
       children: [
         const SizedBox(height: 20,),
@@ -25,9 +30,11 @@ class QuantityBottomSheetWidget extends StatelessWidget {
             itemBuilder: (context, index){
                 return GestureDetector(
                   onTap: (){
-                    print("index ${index+1}");
+                    cartProvider.updateQuantity(productId: cartModel.productId, quantity: index+1);
+                    Navigator.pop(context);
                   },
-                    child: SubtitleTextWidget(label: "${index +1}"));
+
+                    child: Center(child: SubtitleTextWidget(label: "${index +1}")));
           },
           ),
         ),

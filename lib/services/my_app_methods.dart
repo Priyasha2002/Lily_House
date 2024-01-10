@@ -22,7 +22,6 @@ class MyAppMethods{
                 height: 60,
                 width: 60,
               ),
-
               const SizedBox(
                 height: 16.0,
               ),

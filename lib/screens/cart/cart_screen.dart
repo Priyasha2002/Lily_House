@@ -4,6 +4,7 @@ import 'package:lily_house/consts/providers/cart_provider.dart';
 import 'package:lily_house/consts/providers/cart_provider.dart';
 import 'package:lily_house/screens/cart/cart_bottom_checkout.dart';
 import 'package:lily_house/screens/cart/cart_widget.dart';
+import 'package:lily_house/services/my_app_methods.dart';
 import 'package:lily_house/widgets/empty_widget_bag.dart';
 import 'package:lily_house/widgets/titles_text.dart';
 import 'package:provider/provider.dart';
@@ -30,13 +31,21 @@ class CartScreen extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: (){},
+              onPressed: (){
+                MyAppMethods.showErrorOrWarningDialog(
+                    context: context,
+                    subtitle: "Remove Items",
+                    fct: (){
+                      cartProvider.clearLocalCart();
+                    }
+                );
+              },
               icon: Icon(
                 IconlyLight.delete,
               ),
           ),
         ],
-        title: TitleTextWidget(label: "${cartProvider.getCartItems.length}"),
+        title: TitleTextWidget(label: "Cart (${cartProvider.getCartItems.length})"),
         leading: Image.asset(AssetsManager.shoppingCart),
       ),
       body: ListView.builder(

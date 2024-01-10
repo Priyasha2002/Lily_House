@@ -1,6 +1,7 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:lily_house/consts/providers/cart_provider.dart';
 import 'package:lily_house/consts/providers/product_provider.dart';
 import 'package:lily_house/models/cart_model.dart';
 import 'package:lily_house/screens/cart/quantity_bottom_sheet.dart';
@@ -16,6 +17,7 @@ class CartWidget extends StatelessWidget {
     final productProvider = Provider.of<ProductProvider>(context);
     final getCurrentProduct = productProvider.findByProdId(cartModelProvider.productId);
     Size size = MediaQuery.of(context).size;
+    final cartProvider = Provider.of<CartProvider>(context);
     return getCurrentProduct == null
         ? const SizedBox.shrink()
         : FittedBox(
@@ -48,7 +50,9 @@ class CartWidget extends StatelessWidget {
                             Column(
                               children: [
                                 IconButton(
-                                    onPressed: (){},
+                                    onPressed: (){
+                                      cartProvider.removeOneItem(productId: getCurrentProduct.productId);
+                                    },
                                     icon: const Icon(
                                       Icons.delete,
                                     )
@@ -96,7 +100,9 @@ class CartWidget extends StatelessWidget {
 
                                   context: context,
                                   builder: (context){
-                                  return QuantityBottomSheetWidget();
+                                  return QuantityBottomSheetWidget(
+                                    cartModel: cartModelProvider,
+                                  );
                                 },
                                 );
                                 },
