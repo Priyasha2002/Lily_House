@@ -32,7 +32,8 @@ class CartScreen extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: (){
-                MyAppMethods.showErrorOrWarningDialog(
+                MyAppMethods.showErrorORWarningDialog(
+                  isError:  false,
                     context: context,
                     subtitle: "Remove Items",
                     fct: (){

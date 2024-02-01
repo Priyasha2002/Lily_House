@@ -2,7 +2,9 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:lily_house/consts/app_constants.dart';
+import 'package:lily_house/models/products_model.dart';
 import 'package:lily_house/widgets/subtitles_text.dart';
+import 'package:provider/provider.dart';
 
 import '../../screens/product_details.dart';
 class LatestarrivalProductsWidget extends StatelessWidget {
@@ -10,6 +12,7 @@ class LatestarrivalProductsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final productsModel = Provider.of<ProductModel>(context);
     Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -25,7 +28,7 @@ class LatestarrivalProductsWidget extends StatelessWidget {
                ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: FancyShimmerImage(
-                      imageUrl: AppConstants.productImageUrl,
+                      imageUrl: productsModel.productImage,
                     width: size.width * 0.25,
                     height: size.height * 0.25,
                 
@@ -40,7 +43,7 @@ class LatestarrivalProductsWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Title" * 10,
+                        productsModel.productTitle,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -61,9 +64,9 @@ class LatestarrivalProductsWidget extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const FittedBox(
+                      FittedBox(
                         child: SubtitleTextWidget(
-                          label: "₹3000",
+                          label: "${productsModel.productPrice}\$",
                           color: Colors.blue,
                         ),
                       )

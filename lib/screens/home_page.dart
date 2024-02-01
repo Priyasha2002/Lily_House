@@ -1,6 +1,7 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:lily_house/consts/app_constants.dart';
+import 'package:lily_house/consts/providers/product_provider.dart';
 import 'package:lily_house/services/assets_manager.dart';
 import 'package:lily_house/widgets/products/category_rounded_widget.dart';
 import 'package:lily_house/widgets/products/latest_arrival_products_widget.dart';
@@ -18,6 +19,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final productProvider = Provider.of<ProductProvider>(context);
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -68,7 +70,10 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   itemCount: 10,
                     itemBuilder: (context, index){
-                      return const LatestarrivalProductsWidget();
+                      return ChangeNotifierProvider.value(
+                        value: productProvider.getProducts[index],
+                          child: const LatestarrivalProductsWidget()
+                      );
                     }
                     ),
               ),

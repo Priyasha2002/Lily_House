@@ -1,6 +1,7 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lily_house/consts/app_constants.dart';
+import 'package:lily_house/consts/providers/cart_provider.dart';
 import 'package:lily_house/consts/providers/product_provider.dart';
 import 'package:lily_house/services/assets_manager.dart';
 import 'package:lily_house/widgets/app_name_text.dart';
@@ -25,6 +26,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     final productProvider = Provider.of<ProductProvider>(context , listen: false);
     final productId = ModalRoute.of(context)!.settings.arguments as String;
     final getCurrentProduct = productProvider.findByProdId(productId);
+    final cartProvider = Provider.of<CartProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -108,15 +110,22 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 ),
                               ),
                                 onPressed: (){
+                                if (cartProvider.isProductInCart(productId: getCurrentProduct.productId)) {
+                                  return;
+                                }
+                                cartProvider.addProductToCart(productId: getCurrentProduct.productId);
                           
                                 },
-                                icon: const Icon(Icons.add_shopping_cart),
-                                label: const Text
-                                  ("Add to cart",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  )
+                              icon: Icon(
+                                cartProvider.isProductInCart(productId: getCurrentProduct.productId)
+                                    ? Icons.check
+                                    : Icons.add_shopping_cart_rounded
+                              ),
+                                label: Text(
+                                  cartProvider.isProductInCart(productId: getCurrentProduct.productId)
+                                      ?"In Cart"
+                                      : "Add to Cart"
+
                                 ),
                             ),
                           ),
