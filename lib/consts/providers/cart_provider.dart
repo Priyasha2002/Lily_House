@@ -75,8 +75,6 @@ class CartProvider with ChangeNotifier {
     _cartItems.clear();
     notifyListeners();
    }
-
-
     }
 
 

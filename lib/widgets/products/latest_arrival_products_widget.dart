@@ -2,7 +2,9 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:lily_house/consts/app_constants.dart';
+import 'package:lily_house/consts/providers/viewed_prod_provider.dart';
 import 'package:lily_house/models/products_model.dart';
+import 'package:lily_house/widgets/products/wishlist_button_widget.dart';
 import 'package:lily_house/widgets/subtitles_text.dart';
 import 'package:provider/provider.dart';
 
@@ -13,12 +15,20 @@ class LatestarrivalProductsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productsModel = Provider.of<ProductModel>(context);
+    final viewedrovider = Provider.of<ViewedProdProvider>(context);
     Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: ()async{
-          Navigator.pushNamed(context, ProductDetails.routeName);
+          viewedrovider.addProductToHistory(
+              productId: productsModel.productId
+          );
+          await Navigator.pushNamed(
+              context,
+              ProductDetails.routeName,
+              arguments: productsModel.productId
+          );
         },
         child: SizedBox(
           width: size.width * 0.5,
@@ -50,9 +60,8 @@ class LatestarrivalProductsWidget extends StatelessWidget {
                       FittedBox(
                         child: Row(
                           children: [
-                            IconButton(
-                                onPressed: (){},
-                                icon: const Icon(IconlyLight.heart),
+                            WishlistButtonWidget(
+                                productId: productsModel.productId
                             ),
                             IconButton(
                               onPressed: (){},

@@ -49,4 +49,9 @@ class AppConstants {
     ),
 
   ];
+
+  static String apiKey = "AIzaSyB3FVENmfsQkr2iGriWoEpDS71oicWUjB0";
+  static String appId = "1:29973919513:android:6d7a2fba982fc4e45af788";
+  static String messagingSenderId = "29973919513";
+  static String projectId = "lily-house-6329c";
 }

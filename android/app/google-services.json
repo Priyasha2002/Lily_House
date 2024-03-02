@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "29973919513",
+    "project_id": "lily-house-6329c",
+    "storage_bucket": "lily-house-6329c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29973919513:android:6d7a2fba982fc4e45af788",
+        "android_client_info": {
+          "package_name": "com.example.LilyHouse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3FVENmfsQkr2iGriWoEpDS71oicWUjB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

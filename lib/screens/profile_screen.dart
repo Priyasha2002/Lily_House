@@ -10,6 +10,7 @@ import 'package:lily_house/widgets/titles_text.dart';
 import 'package:provider/provider.dart';
 
 import '../consts/providers/theme_provider.dart';
+import 'auth/register.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -85,7 +86,7 @@ class ProfileScreen extends StatelessWidget {
                       imagePath: AssetsManager.wishlistSvg,
                       text: "Wishlist",
                       function:(){
-                        Navigator.pushNamed(context, WishListScreen.routeName);
+                        Navigator.pushNamed(context, WishlistScreen.routeName);
                       }),
                   CustomListTile(
                       imagePath: AssetsManager.recent,
@@ -122,7 +123,7 @@ class ProfileScreen extends StatelessWidget {
                   Center(
                     child: ElevatedButton(
                       onPressed: (){
-                        Navigator.pushNamed(context, LoginScreen.routeName);
+                        Navigator.pushNamed(context, RegisterScreen.routeName);
                       },
                       child: const Text(
                           "Login",

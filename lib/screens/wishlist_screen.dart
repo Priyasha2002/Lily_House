@@ -1,58 +1,60 @@
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:lily_house/services/assets_manager.dart';
-import 'package:lily_house/widgets/products/products_widget.dart';
-import 'package:lily_house/widgets/titles_text.dart';
+import 'package:provider/provider.dart';
+import '../consts/providers/wishlist_provider.dart';
+import '../services/assets_manager.dart';
+import '../services/my_app_methods.dart';
+import '../widgets/empty_widget_bag.dart';
+import '../widgets/products/products_widget.dart';
+import '../widgets/titles_text.dart';
 
-class WishListScreen extends StatefulWidget {
-  static const routeName = "/WishListScreen";
-  const WishListScreen({super.key});
-
+class WishlistScreen extends StatelessWidget {
+  static const routeName = "/WishlistScreen";
+  const WishlistScreen({super.key});
+  final bool isEmpty = true;
   @override
-  State<WishListScreen> createState() => _SearchScreenState();
-}
-
-class _SearchScreenState extends State<WishListScreen> {
-  late TextEditingController searchTextController;
-  @override
-  void initState(){
-    searchTextController= TextEditingController();
-    super.initState();
-  }
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap :(){
-        FocusScope.of(context).unfocus();
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          title: const TitleTextWidget(label: "Wishlist(5)"),
-          leading: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(AssetsManager.shoppingCart),
-          ),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              const SizedBox(height: 10,),
-              Expanded(
-                child: DynamicHeightGridView(
-                  builder: (context , index) {
-                    return const ProductWidget(
-                      productId: "",
-                    );
-                  },
-                  itemCount: 30,
-                  crossAxisCount: 2,
-                ),
-              ),
-            ],
-          ),
-        ),
+    final wishlistProvider = Provider.of<WishListProvider>(context);
 
+    return wishlistProvider.getwishlistItems.isEmpty
+        ? Scaffold(
+      body: EmptyBagWidget(
+        imagePath: AssetsManager.bagWish,
+        title: "Nothing in ur wishlist yet",
+        subtitle:
+        "Looks like your cart is empty add something and make me happy",
+        buttonText: "Shop now",
+      ),
+    )
+        : Scaffold(
+      appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
+            AssetsManager.shoppingCart,
+          ),
+        ),
+        title: TitleTextWidget(
+            label: "Wishlist (${wishlistProvider.getwishlistItems.length})"),
+        actions: [
+
+        ],
+      ),
+      body: DynamicHeightGridView(
+        mainAxisSpacing: 12,
+        crossAxisSpacing: 12,
+        builder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ProductWidget(
+              productId: wishlistProvider.getwishlistItems.values
+                  .toList()[index]
+                  .productId,
+            ),
+          );
+        },
+        itemCount: wishlistProvider.getwishlistItems.length,
+        crossAxisCount: 2,
       ),
     );
   }

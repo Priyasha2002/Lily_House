@@ -6,6 +6,7 @@ import 'package:lily_house/screens/search_screen.dart';
 
 import 'screens/home_page.dart';
 class RootScreen extends StatefulWidget {
+  static const routeName = "/RootScreen";
   const RootScreen({super.key});
 
   @override

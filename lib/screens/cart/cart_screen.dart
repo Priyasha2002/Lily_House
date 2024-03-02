@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:lily_house/consts/providers/cart_provider.dart';
-import 'package:lily_house/consts/providers/cart_provider.dart';
 import 'package:lily_house/screens/cart/cart_bottom_checkout.dart';
 import 'package:lily_house/screens/cart/cart_widget.dart';
 import 'package:lily_house/services/my_app_methods.dart';
 import 'package:lily_house/widgets/empty_widget_bag.dart';
 import 'package:lily_house/widgets/titles_text.dart';
 import 'package:provider/provider.dart';
-import '../../consts/providers/cart_provider.dart';
-import '../../consts/providers/cart_provider.dart';
 import '../../services/assets_manager.dart';
 
 class CartScreen extends StatelessWidget {
@@ -41,7 +38,7 @@ class CartScreen extends StatelessWidget {
                     }
                 );
               },
-              icon: Icon(
+              icon: const Icon(
                 IconlyLight.delete,
               ),
           ),

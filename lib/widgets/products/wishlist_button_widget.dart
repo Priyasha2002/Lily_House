@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:lily_house/consts/providers/wishlist_provider.dart';
+import 'package:provider/provider.dart';
 
 class WishlistButtonWidget extends StatefulWidget {
   final double size;
   final Color colors;
+  final String productId;
   const WishlistButtonWidget({
     super.key,
     this.size = 22,
-    this.colors= Colors.transparent,
+    this.colors= Colors.transparent, required this.productId,
   });
 
   @override
@@ -16,6 +19,7 @@ class WishlistButtonWidget extends StatefulWidget {
 class _WishlistButtonWidgetState extends State<WishlistButtonWidget> {
   @override
   Widget build(BuildContext context) {
+    final wishlistprovider = Provider.of<WishListProvider>(context);
     return Container(
       decoration: BoxDecoration(
         shape: BoxShape.circle,
@@ -25,10 +29,17 @@ class _WishlistButtonWidgetState extends State<WishlistButtonWidget> {
         style: IconButton.styleFrom(
           shape: const CircleBorder(),
         ),
-          onPressed: (){},
+          onPressed: (){
+          wishlistprovider.addOrRemoveFromWishlist(productId: widget.productId);
+          },
           icon: Icon(
-            IconlyLight.heart,
+            wishlistprovider.isProductInWishlist(productId: widget.productId)
+            ? IconlyBold.heart
+            : IconlyLight.heart,
             size: widget.size,
+            color: wishlistprovider.isProductInWishlist(productId: widget.productId)
+              ? Colors.red
+                : Colors.grey
           )
       ),
     );

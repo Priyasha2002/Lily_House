@@ -11,8 +11,6 @@ class ThemeProvider with ChangeNotifier{
     getTheme();
   }
 
-
-
   Future<void> setDarkTheme({required bool themevalue}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool(themeStatus , themevalue);

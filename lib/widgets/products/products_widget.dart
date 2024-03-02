@@ -58,9 +58,11 @@ class _ProductWidgetState extends State<ProductWidget> {
                       fontSize: 18,
                     ),
                 ),
-                const Flexible(
+                 Flexible(
                   flex: 2,
-                  child: WishlistButtonWidget(),
+                  child: WishlistButtonWidget(
+                    productId: getCurrentProduct.productId,
+                  ),
                 )
               ],
             ),

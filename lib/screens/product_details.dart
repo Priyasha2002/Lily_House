@@ -94,6 +94,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         WishlistButtonWidget(
+                          productId: getCurrentProduct.productId,
                           colors: Colors.purple.shade300,
                         ),
                         const SizedBox(
