@@ -8,7 +8,11 @@ class AppConstants {
   static List<String> bannersImages= [
     AssetsManager.bag_image,
     AssetsManager.bag2_image,
-    AssetsManager.bag4_image
+    AssetsManager.bag4_image,
+    AssetsManager.rare_beauty,
+    AssetsManager.mcaffeine,
+    AssetsManager.clothes
+
   ];
 
   static List<CategoryModel> categoriesList = [
@@ -47,6 +51,11 @@ class AppConstants {
         images: AssetsManager.shoes,
         name: "Shoes"
     ),
+    CategoryModel(
+        id: "Phones",
+        images: AssetsManager.mobiles,
+        name: "Phones"
+    ),
 
   ];
 
@@ -54,4 +63,5 @@ class AppConstants {
   static String appId = "1:29973919513:android:6d7a2fba982fc4e45af788";
   static String messagingSenderId = "29973919513";
   static String projectId = "lily-house-6329c";
+  static String storagebucket = "lily-house-6329c.appspot.com";
 }

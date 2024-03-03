@@ -35,105 +35,140 @@ class ProductProvider with ChangeNotifier {
   }
 
   final List<ProductModel> _products = [
-    // Phones
+    // Handbags
     ProductModel(
       //1
-      productId: 'iphone14-128gb-black',
-      productTitle: "Apple iPhone 14 Pro (128GB) - Black",
-      productPrice: "1399.99",
-      productCategory: "Phones",
+      productId: '410381342001',
+      productTitle: "Women Pink Messenger Bag",
+      productPrice: "2999",
+      productCategory: "Handbags",
       productDescription:
-      "6.1-inch Super Retina XDR display with ProMotion and always-on display. Dynamic Island, a new and magical way to interact with your iPhone. 48MP main camera for up to 4x higher resolution. Cinematic mode, now in 4K Dolby Vision up to 30 fps. Action mode, for stable and smooth videos when you're on the move. Accident detection, vital safety technology that calls for help for you. All-day battery life and up to 23 hours of video playback.",
-      productImage: "https://i.ibb.co/BtMBSgK/1-iphone14-128gb-black.webp",
+      "Wipe with clean, dry cloth ;PVC: Dimensions: 40.5 cm x 31 cm x 13 cm; Package contains: 1 bag, 1 detachable strap;One main compartment, one interior zipper pocket",
+      productImage: "https://rukminim2.flixcart.com/image/832/832/xif0q/hand-messenger-bag/w/w/b/-original-imagrh35g9zdguwn.jpeg?q=70&crop=false",
       productQuantity: "10",
     ),
     ProductModel(
       //2
-      productId: 'iphone13-mini-256gb-midnight',
+      productId: '410381342000',
       productTitle:
-      "iPhone 13 Mini, 256GB, Midnight - Unlocked (Renewed Premium)",
-      productPrice: "659.99",
-      productCategory: "Phones",
+      "Girls Blue Messenger Bag",
+      productPrice: "2999",
+      productCategory: "Handbags",
       productDescription:
-      "5.4 Super Retina XDR display. 5G Superfast downloads, high quality streaming. Cinematic mode in 1080p at 30 fps. Dolby Vision HDR video recording up to 4K at 60 fps. 2X Optical zoom range. A15 Bionic chip. New 6-core CPU with 2 performance and 4 efficiency cores. New 4-core GPU. New 16-core Neural Engine. Up to 17 hours video playback. Face ID. Ceramic Shield front. Aerospace-grade aluminum. Water resistant to a depth of 6 meters for up to 30 minutes. Compatible with MagSafe accessories and wireless chargers.",
+      "Model Name: small stylish sling bag for women and girls.Number of Compartments:2,Capacity: 5 LWater; Resistant: No; Material: PU ;Number of Pockets: 1 ,Width: 14cm ;Depth:12cm; Weight: 350 ",
       productImage:
-      "https://i.ibb.co/nbwTvXQ/2-iphone13-mini-256gb-midnight.webp",
+      "https://rukminim2.flixcart.com/image/832/832/l1fc0i80/sling-bag/f/3/b/technic-sling-technic-red-sling-bag-hercraft-original-imagczc2j6dp6xdg.jpeg?q=70&crop=false",
       productQuantity: "15",
     ),
 
     ProductModel(
       //3
-      productId: 'Acheter un iPhone 14',
-      productTitle: "iPhone 14",
-      productPrice: "1199.99",
-      productCategory: "Phones",
+      productId: "4103813420002",
+      productTitle: "Women Green Handbag - Mini",
+      productPrice: "2999",
+      productCategory: "Handbags",
       productDescription:
-      "Les détails concernant la livraison dans votre région s’afficheront sur la page de validation de la commande.",
-      productImage: "https://i.ibb.co/G7nXCW4/3-i-Phone-14.jpg",
+      "Capacity: 5 L; Sales Package:Handbag Set Of 5;Bag Size:Mini;Material:Artificial Leather;Width:12 cm;Height:10.5 cm;Closure:Zip,Color:Green",
+      productImage: "https://rukminim2.flixcart.com/image/832/832/kqjtd3k0/hand-messenger-bag/s/q/n/orignal-sea-green-combo-messenger-bag-1-orignal-sea-green-combo-original-imag4j98yejtvjfw.jpeg?q=70&crop=false",
       productQuantity: "144",
     ),
     ProductModel(
       //4
       productId: const Uuid().v4(),
       productTitle:
-      "Samsung Galaxy S22 Ultra 5G - 256GB - Phantom Black (Unlocked)",
-      productPrice: "1199.99",
-      productCategory: "Phones",
+      "Women Black Handbag - Regular Size",
+      productPrice: "2999",
+      productCategory: "Handbags",
       productDescription:
-      "About this item\n6.8 inch Dynamic AMOLED 2X display with a 3200 x 1440 resolution\n256GB internal storage, 12GB RAM\n108MP triple camera system with 100x Space Zoom and laser autofocus\n40MP front-facing camera with dual pixel AF\n5000mAh battery with fast wireless charging and wireless power share\n5G capable for lightning fast download and streaming",
+      " This handbags from the house of LIKE STYLE. It's made from PU leather material. Stylish Design:- A bag which is fashionable and stylish purse for women enough, concise and powerful at the same time, perfectly show your personality. High Quality PU Leather Ladies Purse ,Handbags with Sling bag.Top Zipper Closure,Adjustable and Removable Shoulder Strap.Diffrent Ways To Carry, You Can Use The Bag As Tote, Shoulder Bag Or Crossbody Bag. The LIKE STYLE collection Handbag is a great handbags for women and girls purse in Beautiful Colors. It’s women's cross-body bags fashionable-elegance-affordable all together. You can carry to anywhere on all year season. STURDY HANDLE: Pu hand bag handle is sturdy since it have been double reinforced not worries when you carry some heavy stuffs which are strong enough to support up to 5 KG of stuffs. bags for women stylish latest | girls college office bag | shoulder bag purse | women's handbag | ladies hand bagsThe sling bag/ Wallet is an added accessory along with the handbag and together they make up a cool accessory combo",
       productImage:
-      "https://i.ibb.co/z5zMDCx/4-Samsung-Galaxy-S22-Ultra-5-G-256-GB-Phantom-Black-Unlocked.webp",
+      "https://rukminim2.flixcart.com/image/832/832/xif0q/hand-messenger-bag/d/e/j/-original-imagvz4ajdx2vafz.jpeg?q=70&crop=false",
       productQuantity: "2363",
     ),
     ProductModel(
       //5
       productId: const Uuid().v4(),
       productTitle:
-      "Samsung Galaxy S21 Ultra 5G | Factory Unlocked Android Cell Phone | US Version 5G Smartphone",
-      productPrice: "1199.99",
-      productCategory: "Phones",
+      "mCaffeine Face Glow Kit",
+      productPrice: "3000",
+      productCategory: "Cosmetics",
       productDescription:
       "About this item\nPro Grade Camera: Zoom in close with 100X Space Zoom, and take photos and videos like a pro with our easy-to-use, multi-lens camera.\n100x Zoom: Get amazing clarity with a dual lens combo of 3x and 10x optical zoom, or go even further with our revolutionary 100x Space Zoom.\nHighest Smartphone Resolution: Crystal clear 108MP allows you to pinch, crop and zoom in on your photos to see tiny, unexpected details, while lightning-fast Laser Focus keeps your focal point clear\nAll Day Intelligent Battery: Intuitively manages your cellphone’s usage, so you can go all day without charging (based on average battery life under typical usage conditions).\nPower of 5G: Get next-level power for everything you love to do with Samsung Galaxy 5G; More sharing, more gaming, more experiences and never miss a beat",
       productImage:
-      "https://i.ibb.co/ww5WjkV/5-Samsung-Galaxy-S21-Ultra-5-G.png",
+      "https://www.mcaffeine.com/cdn/shop/products/1_a3ab81f3-3ef0-4d0e-9d1d-e81a18de1f43.jpg?v=1630552091",
       productQuantity: "3625",
     ),
     ProductModel(
       //6
       productId: const Uuid().v4(),
       productTitle:
-      "OnePlus 9 Pro 5G LE2120 256GB 12GB RAM Factory Unlocked (GSM Only | No CDMA - not Compatible with Verizon/Sprint) International Version - Morning Mist",
-      productPrice: "1099.99",
-      productCategory: "Phones",
+      "mCaffeine Body Glow Combo",
+      productPrice: "2500",
+      productCategory: "Cosmetics",
       productDescription:
       "About this item\n6.7 inch LTPO Fluid2 AMOLED, 1B colors, 120Hz, HDR10+, 1300 nits (peak)\n256GB internal storage, 12GB RAM\nQuad rear camera: 48MP, 50MP, 8MP, 2MP\n16MP front-facing camera\n4500mAh battery with Warp Charge 65T (10V/6.5A) and 50W Wireless Charging\n5G capable for lightning fast download and streaming",
       productImage:
-      "https://i.ibb.co/0yhgKVv/6-One-Plus-9-Pro-5-G-LE2120-256-GB-12-GB-RAM.png",
+      "https://www.mcaffeine.com/cdn/shop/files/DeepBodyCleansing-CoffeeTrio_1.jpg?v=1699355782",
       productQuantity: "3636",
     ),
+    ProductModel(
+      //30
+      productId: const Uuid().v4(),
+      productTitle: "Rare Beauty",
+      productPrice: "5000",
+      productCategory: "Cosmetics",
+      productDescription:
+      "About this item\nSignature striped fabric liner\n15 inch laptop sleeve\nFront storage pocket with key clip\nInternal media pocket with headphone port\nClassic woven label\nDimensions: 17.75 inches (H) x 12.25 inches (W) x 5.75 inches (D)",
+      productImage:
+      "https://www.refinery29.com/images/10115046.jpg?format=webp&width=&height=&quality=85",
+      productQuantity: "3637",
+    ),
 
+    ProductModel(
+      //8
+      productId: const Uuid().v4(),
+      productTitle: "mCaffeine Anti Aging Prevention Kit",
+      productPrice: "1999",
+      productCategory: "Cosmetics",
+      productDescription:
+      "A new, larger 6.7-inch size joins the popular 6.1-inch design, featuring a new dual-camera system, Crash Detection, a smartphone industry-first safety service with Emergency SOS via satellite, and the best battery life on iPhone",
+      productImage: "https://m.media-amazon.com/images/I/51iQm3UBclL._AC_UF1000,1000_QL80_.jpg",
+      productQuantity: "2526",
+    ),
+    ProductModel(
+      //36
+      productId: const Uuid().v4(),
+      productTitle: "Smocked Ruffled Bodycon Dress",
+      productPrice: "2499",
+      productCategory: "Fashion",
+      productDescription:
+      "About this item\nSuede and Canvas Upper\nRe-enforced toecaps\nPadded collars\nSignature rubber waffle outsole",
+      productImage: "https://img101.urbanic.com/v1/goods-pic/d5a8719b64e94f259cd4d7ac125422d3UR_w1440_q90.webp",
+      productQuantity: "383",
+    ),
+    ProductModel(
+      //36
+      productId: const Uuid().v4(),
+      productTitle: "Starry pink ",
+      productPrice: "2999",
+      productCategory: "Fashion",
+      productDescription:
+      "About this item\nSuede and Canvas Upper\nRe-enforced toecaps\nPadded collars\nSignature rubber waffle outsole",
+      productImage: "https://img101.urbanic.com/v1/goods-pic/e716d6d33f4c493486fdf2fd0d713cedUR_w1440_q90.webp",
+      productQuantity: "383",
+    ),
     ProductModel(
       //7
       productId: const Uuid().v4(),
       productTitle: "Samsung Galaxy Z Flip3 5G",
       productPrice: "999.99",
-      productCategory: "Phones",
+      productCategory: "Cosmetics",
       productDescription:
       "About this item\nGet the latest Galaxy experience on your phone.\nFOLDING DISPLAY - Transform the way you capture, share and experience content.\nCAPTURE EVERYTHING - With the wide-angle camera and the front camera, take stunning photos and videos from every angle.\nWATER RESISTANT - Use your Galaxy Z Flip3 5G even when it rains.\nONE UI 3.1 - Enjoy the Galaxy Z Flip3 5G’s sleek, premium design and all the features you love from the latest One UI 3.1. ",
-      productImage: "https://i.ibb.co/NstFstg/7-Samsung-Galaxy-Z-Flip3-5-G.png",
+      productImage: "https://www.minifeel.in/cdn/shop/files/Packof12mcaffeinecombo.jpg?v=1694676383",
       productQuantity: "525",
     ),
-    ProductModel(
-      //8
-      productId: const Uuid().v4(),
-      productTitle: "Apple introduces iPhone 14 and iPhone 14 Plus",
-      productPrice: "1199.99",
-      productCategory: "Phones",
-      productDescription:
-      "A new, larger 6.7-inch size joins the popular 6.1-inch design, featuring a new dual-camera system, Crash Detection, a smartphone industry-first safety service with Emergency SOS via satellite, and the best battery life on iPhone",
-      productImage: "https://i.ibb.co/8P1HBm4/8-iphone14plushereo.jpg",
-      productQuantity: "2526",
-    ),
+
     ProductModel(
       //9
       productId: const Uuid().v4(),
@@ -161,10 +196,10 @@ class ProductProvider with ChangeNotifier {
       productId: const Uuid().v4(),
       productTitle: "Google Pixel 6",
       productPrice: "799.99",
-      productCategory: "Phones",
+      productCategory: "Cosmetics",
       productDescription:
       "About this item\nPowered by Google Tensor chip, designed for mobile, the Google Pixel 6 delivers exceptional AI-powered experiences.\n6.4-inch Full HD+ display with 90Hz refresh rate and HDR10+.\n50MP + 12MP dual rear camera system, 4K/60fps video recording.\n8MP front camera with Night Sight, portrait mode and more.\nBuilt-in Titan M2 security chip for advanced security.\nAndroid 12 OS with three years of updates and monthly security patches.",
-      productImage: "https://i.ibb.co/0K8ZxZj/11-Google-Pixel-6.png",
+      productImage: "https://www.abeautyedit.com/wp-content/uploads/2020/06/best-of-maybelline-drugstore-makeup-f2.jpg.webp",
       productQuantity: "62332",
     ),
     // Laptops
@@ -373,21 +408,10 @@ class ProductProvider with ChangeNotifier {
       productDescription:
       "About this item\n100% UV protection: Ray-Ban sunglass lenses are coated with 100% UV protection to protect your eyes from all harmful UV rays\nPolarized sunglasses: These classic Ray-Ban Wayfarer sunglasses feature polarized lenses to reduce glare and enhance clarity\nIconic style: The Wayfarer is one of Ray-Ban's most recognizable and classic designs, available in a variety of lens and frame colors\nDurable construction: These Ray-Ban sunglasses are built to last with high-quality materials and construction",
       productImage:
-      "https://i.ibb.co/FDMK4Lq/29-Ray-Ban-Wayfarer-Sunglasses.png",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8lK8pk9Rag7njPUQNBaB08JrIh10pO87YDFEMGf0WKQ85O6G00cx9-eAmbhm9CZWHn0Y&usqp=CAU",
       productQuantity: "7436",
     ),
-    ProductModel(
-      //30
-      productId: const Uuid().v4(),
-      productTitle: "Herschel Supply Co. Settlement Backpack",
-      productPrice: "64.99",
-      productCategory: "Accessories",
-      productDescription:
-      "About this item\nSignature striped fabric liner\n15 inch laptop sleeve\nFront storage pocket with key clip\nInternal media pocket with headphone port\nClassic woven label\nDimensions: 17.75 inches (H) x 12.25 inches (W) x 5.75 inches (D)",
-      productImage:
-      "https://i.ibb.co/1GV6Nrv/30-Herschel-Supply-Co-Settlement-Backpack.png",
-      productQuantity: "3637",
-    ),
+
     ProductModel(
       //31
       productId: const Uuid().v4(),
@@ -455,6 +479,99 @@ class ProductProvider with ChangeNotifier {
       productDescription:
       "About this item\nSuede and Canvas Upper\nRe-enforced toecaps\nPadded collars\nSignature rubber waffle outsole",
       productImage: "https://i.ibb.co/NNDk3pt/24-Vans-Old-Skool.png",
+      productQuantity: "383",
+    ),
+
+
+
+
+// Fashion
+    ProductModel(
+      //36
+      productId: const Uuid().v4(),
+      productTitle: "Formal but stylish",
+      productPrice: "2499",
+      productCategory: "Fashion",
+      productDescription:
+      "About this item\nSuede and Canvas Upper\nRe-enforced toecaps\nPadded collars\nSignature rubber waffle outsole",
+      productImage: "https://www.alamodelabel.in/cdn/shop/files/2D796CDB-CED1-4828-A4B7-F94536DAE86F_800x.jpg?v=1699521098",
+      productQuantity: "383",
+    ),
+    ProductModel(
+      //36
+      productId: const Uuid().v4(),
+      productTitle: "Royal Pink Dress",
+      productPrice: "2499",
+      productCategory: "Fashion",
+      productDescription:
+      "About this item\nSuede and Canvas Upper\nRe-enforced toecaps\nPadded collars\nSignature rubber waffle outsole",
+      productImage: "https://img101.urbanic.com/v1/goods-pic/0d11e8ac54de4ddd9cfb2b1d1e8d69aaUR_w540_q85.webp",
+      productQuantity: "383",
+    ),
+    ProductModel(
+      //36
+      productId: const Uuid().v4(),
+      productTitle: "Patchwork Bodysuit",
+      productPrice: "2999",
+      productCategory: "Fashion",
+      productDescription:
+      "About this item\nSuede and Canvas Upper\nRe-enforced toecaps\nPadded collars\nSignature rubber waffle outsole",
+      productImage: "https://img101.urbanic.com/v1/goods-pic/faa17673d2db472cb9d97bd6bf5c40e1UR_w1440_q90.webp",
+      productQuantity: "383",
+    ),
+    ProductModel(
+      //36
+      productId: const Uuid().v4(),
+      productTitle: "Ruffle Playsuit",
+      productPrice: "2499",
+      productCategory: "Fashion",
+      productDescription:
+      "About this item\nSuede and Canvas Upper\nRe-enforced toecaps\nPadded collars\nSignature rubber waffle outsole",
+      productImage: "https://img101.urbanic.com/v1/goods-pic/58e10b4c43c743afbad73de022491c32UR_w1440_q90.webp",
+      productQuantity: "383",
+    ),
+    ProductModel(
+      //36
+      productId: const Uuid().v4(),
+      productTitle: "Feather Co-ord Set",
+      productPrice: "2499",
+      productCategory: "Fashion",
+      productDescription:
+      "About this item\nSuede and Canvas Upper\nRe-enforced toecaps\nPadded collars\nSignature rubber waffle outsole",
+      productImage: "https://img101.urbanic.com/v1/goods-pic/34b44e407f8244efa06a5a22aa4d687dUR_w1440_q90.webp",
+      productQuantity: "383",
+    ),
+    ProductModel(
+      //36
+      productId: const Uuid().v4(),
+      productTitle: "Selena Jeans",
+      productPrice: "3500",
+      productCategory: "Fashion",
+      productDescription:
+      "About this item\nSuede and Canvas Upper\nRe-enforced toecaps\nPadded collars\nSignature rubber waffle outsole",
+      productImage: "https://i.pinimg.com/736x/7b/69/13/7b69131be15794c496d9500bb51d73fc.jpg",
+      productQuantity: "383",
+    ),
+    ProductModel(
+      //36
+      productId: const Uuid().v4(),
+      productTitle: "Selena Jeans",
+      productPrice: "3500",
+      productCategory: "Fashion",
+      productDescription:
+      "About this item\nSuede and Canvas Upper\nRe-enforced toecaps\nPadded collars\nSignature rubber waffle outsole",
+      productImage: "https://www.celebsfirst.com/wp-content/uploads/2017/10/selena-gomez-out-and-about-in-a-black-top-and-jeans-in-new-york-city-031017_1.jpg",
+      productQuantity: "383",
+    ),
+    ProductModel(
+      //36
+      productId: const Uuid().v4(),
+      productTitle: "Selena Jeans",
+      productPrice: "3500",
+      productCategory: "Fashion",
+      productDescription:
+      "About this item\nSuede and Canvas Upper\nRe-enforced toecaps\nPadded collars\nSignature rubber waffle outsole",
+      productImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrDsvd0SbDkbbbIQ4cpHXudfC0iUTCAuwwggHXwS4P-1HOoScG9zScFJlDbqCETQjf_w0&usqp=CAU",
       productQuantity: "383",
     ),
   ];

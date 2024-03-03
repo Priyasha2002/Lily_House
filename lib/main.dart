@@ -10,12 +10,14 @@ import 'package:lily_house/screens/auth/forgot_password.dart';
 import 'package:lily_house/screens/auth/login.dart';
 import 'package:lily_house/screens/auth/register.dart';
 import 'package:lily_house/screens/product_details.dart';
+import 'package:lily_house/screens/profile_screen.dart';
 import 'package:lily_house/screens/search_screen.dart';
 import 'package:lily_house/screens/viewed_recently.dart';
 import 'package:lily_house/screens/wishlist_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'consts/providers/theme_provider.dart';
+import 'consts/providers/user_provider.dart';
 import 'consts/theme_data.dart';
 
 
@@ -38,7 +40,8 @@ class MyApp extends StatelessWidget {
             apiKey: AppConstants.apiKey,
             appId: AppConstants.appId,
             messagingSenderId: AppConstants.messagingSenderId,
-            projectId: AppConstants.projectId
+            projectId: AppConstants.projectId,
+            storageBucket: AppConstants.storagebucket
         ),
       ),
       builder: (context , snapshot) {
@@ -74,6 +77,9 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider(create: (context) => ViewedProdProvider(),
           ),
+          ChangeNotifierProvider(create: (_) {
+            return UserProvider();
+          }),
         ],
           child: Consumer<ThemeProvider>(
             builder: (context, themeProvider, child) {
@@ -82,7 +88,7 @@ class MyApp extends StatelessWidget {
                 theme: Styles.themeData(
                     isDarkTheme: themeProvider.getIsDarkTheme,
                     context: context),
-                home: const RootScreen(),
+                home: const ProfileScreen(),
                 routes: {
                   ProductDetails.routeName: (context) => const ProductDetails(),
                   WishlistScreen.routeName: (context) => const WishlistScreen(),

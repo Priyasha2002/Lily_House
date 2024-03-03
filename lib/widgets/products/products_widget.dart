@@ -76,7 +76,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                 children: [
                   Flexible(
                     flex: 3,
-                      child: SubtitleTextWidget(label: "${getCurrentProduct.productPrice}\$")
+                      child: SubtitleTextWidget(label: "₹${getCurrentProduct.productPrice}")
                   ),
                   Material(
                     borderRadius: BorderRadius.circular(16.0),

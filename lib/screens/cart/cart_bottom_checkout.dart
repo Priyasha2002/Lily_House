@@ -41,7 +41,7 @@ class CartBottomCheckout extends StatelessWidget {
                         ),
                       ),
                       SubtitleTextWidget(
-                          label: "${cartProvider.getTotal(productProvider: productProvider)}\$",
+                          label: "₹${cartProvider.getTotal(productProvider: productProvider)}",
                           color: Colors.blue
                       ),
                     ],

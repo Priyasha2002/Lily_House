@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lily_house/screens/search_screen.dart';
 import 'package:lily_house/widgets/subtitles_text.dart';
 import 'package:lily_house/widgets/titles_text.dart';
 
@@ -43,16 +44,21 @@ class EmptyBagWidget extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              SubtitleTextWidget(
-                label:subtitle,
-                fontWeight: FontWeight.w400,
-                fontSize: 20,
+              Align(
+                alignment: Alignment.center,
+                child: SubtitleTextWidget(
+                  label:subtitle,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
               ),
               const SizedBox(
                 height: 30,
               ),
               ElevatedButton(
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.pushNamed(context, SearchScreen.routeName);
+                },
                 child: Text(
                   buttonText,
                   style: TextStyle(

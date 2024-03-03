@@ -71,7 +71,7 @@ class CartWidget extends StatelessWidget {
                         Row(
                           children: [
                             SubtitleTextWidget(
-                              label: "${getCurrentProduct.productPrice}\$",
+                              label: "₹${getCurrentProduct.productPrice}",
                               fontSize: 20,
                               color: Colors.blue,
                             ),

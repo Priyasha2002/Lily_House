@@ -18,12 +18,15 @@ class WishlistScreen extends StatelessWidget {
 
     return wishlistProvider.getwishlistItems.isEmpty
         ? Scaffold(
-      body: EmptyBagWidget(
-        imagePath: AssetsManager.bagWish,
-        title: "Nothing in ur wishlist yet",
-        subtitle:
-        "Looks like your cart is empty add something and make me happy",
-        buttonText: "Shop now",
+      body: Align(
+        alignment: Alignment.center,
+        child: EmptyBagWidget(
+          imagePath: AssetsManager.bagWish,
+          title: "Nothing in ur wishlist yet",
+          subtitle:
+          "Looks like your cart is empty",
+          buttonText: "Shop now",
+        ),
       ),
     )
         : Scaffold(

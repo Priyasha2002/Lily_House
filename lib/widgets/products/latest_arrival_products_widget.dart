@@ -75,7 +75,7 @@ class LatestarrivalProductsWidget extends StatelessWidget {
                       ),
                       FittedBox(
                         child: SubtitleTextWidget(
-                          label: "${productsModel.productPrice}\$",
+                          label: " ₹${ productsModel.productPrice}",
                           color: Colors.blue,
                         ),
                       )

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -8,12 +7,12 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lily_house/services/my_app_methods.dart';
-
 import '../../root_screen.dart';
 import '../../widgets/app_name_text.dart';
 import '../../widgets/auth/pick_image_widget.dart';
 import '../../widgets/subtitles_text.dart';
 import '../../widgets/titles_text.dart';
+import '../loading_manager.dart';
 import 'forgot_password.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -70,11 +69,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
     super.dispose();
   }
+
   Future<void> _registerFCT() async {
     final isValid = _formkey.currentState!.validate();
     FocusScope.of(context).unfocus();
-
-
+    if (_pickedImage == null) {
+      MyAppMethods.showErrorORWarningDialog(
+          context: context,
+          subtitle: "Make sure to pick up an image",
+          fct: () {});
+      return;
+    }
     if (isValid) {
       try {
         setState(() {
@@ -95,20 +100,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
         await ref.putFile(File(_pickedImage!.path));
         userImageUrl = await ref.getDownloadURL();
         await FirebaseFirestore.instance.collection("users").doc(uid).set({
-            'userId': uid,
-            'userName': _nameController.text,
-            'userImage': userImageUrl,
-            'userEmail': _emailController.text.toLowerCase(),
-            'createdAt': Timestamp.now(),
+          'userId': uid,
+          'userName': _nameController.text,
+          'userImage': userImageUrl,
+          'userEmail': _emailController.text.toLowerCase(),
+          'createdAt': Timestamp.now(),
           'userWish': [],
           'userCart': [],
         });
         Fluttertoast.showToast(
-          msg: "An account has been created",
+          msg: "Account has been created successfully",
           textColor: Colors.white,
         );
         if (!mounted) return;
-        Navigator.pushReplacementNamed(context, RootScreen.routeName);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const RootScreen(),
+          ),
+        );
       } on FirebaseException catch (error) {
         await MyAppMethods.showErrorORWarningDialog(
           context: context,
@@ -132,11 +142,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Future<void> localImagePicker() async {
     final ImagePicker imagePicker = ImagePicker();
     await MyAppMethods.imagePickerDialog(
-        context: context,
-        cameraFCT: () async {
-      _pickedImage = await imagePicker.pickImage(source: ImageSource.camera);
-      setState(() {});
-        },
+      context: context,
+      cameraFCT: () async {
+        _pickedImage = await imagePicker.pickImage(source: ImageSource.camera);
+        setState(() {});
+      },
       galleryFCT: () async {
         _pickedImage = await imagePicker.pickImage(source: ImageSource.gallery);
         setState(() {});
@@ -153,201 +163,202 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
-        onTap: () {
-      FocusScope.of(context).unfocus();
-    },
-    child: Scaffold(
-    body: Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: SingleChildScrollView(
-    child: Column(
-    children: [
-    // const BackButton(),
-    const SizedBox(
-    height: 60,
-    ),
-    const AppNameTextWidget(
-    fontSize: 30,
-    ),
-    const SizedBox(
-    height: 30,
-    ),
-    const Align(
-    alignment: Alignment.centerLeft,
-    child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      TitleTextWidget(label: "Welcome back!"),
-      SubtitleTextWidget(label: "Your welcome message"),
-    ],
-    )),
-    const SizedBox(
-    height: 30,
-    ),
-    SizedBox(
-    height: size.width * 0.3,
-    width: size.width * 0.3,
-    child: PickImageWidget(
-    pickedImage: _pickedImage,
-    function: () async {
-    await localImagePicker();
-    },
-    ),
-    ),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        body: LoadingManager(
+          isLoading: _isLoading,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  // const BackButton(),
+                  const SizedBox(
+                    height: 60,
+                  ),
+                  const AppNameTextWidget(
+                    fontSize: 30,
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Align(
+                      alignment: Alignment.center,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          TitleTextWidget(label: "Welcome back to Lily House!"),
+                          SubtitleTextWidget(label: "where Elegance Meets Charm"),
+                        ],
+                      )),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  SizedBox(
+                    height: size.width * 0.3,
+                    width: size.width * 0.3,
+                    child: PickImageWidget(
+                      pickedImage: _pickedImage,
+                      function: () async {
+                        await localImagePicker();
+                      },
+                    ),
+                  ),
 
-    const SizedBox(
-    height: 30,
-    ),
-    Form(
-    key: _formkey,
-    child: Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-    TextFormField(
-    controller: _nameController,
-    focusNode: _nameFocusNode,
-    textInputAction: TextInputAction.next,
-    keyboardType: TextInputType.name,
-    decoration: const InputDecoration(
-    hintText: 'Full Name',
-    prefixIcon: Icon(
-    Icons.person,
-    ),
-    ),
-    onFieldSubmitted: (value) {
-    FocusScope.of(context)
-        .requestFocus(_emailFocusNode);
-    },
-    validator: (value) {
-    return MyValidators.displayNamevalidator(value);
-    },
-    ),
-    const SizedBox(
-    height: 16.0,
-    ),
-    TextFormField(
-    controller: _emailController,
-    focusNode: _emailFocusNode,
-    textInputAction: TextInputAction.next,
-    keyboardType: TextInputType.emailAddress,
-    decoration: const InputDecoration(
-    hintText: "Email address",
-    prefixIcon: Icon(
-    IconlyLight.message,
-    ),
-    ),
-    onFieldSubmitted: (value) {
-    FocusScope.of(context)
-        .requestFocus(_passwordFocusNode);
-    },
-    validator: (value) {
-    return MyValidators.emailValidator(value);
-    },
-    ),
-    const SizedBox(
-    height: 16.0,
-    ),
-    TextFormField(
-    controller: _passwordController,
-    focusNode: _passwordFocusNode,
-    textInputAction: TextInputAction.next,
-    keyboardType: TextInputType.visiblePassword,
-    obscureText: obscureText,
-    decoration: InputDecoration(
-    hintText: "*",
-    prefixIcon: const Icon(
-    IconlyLight.lock,
-    ),
-    suffixIcon: IconButton(
-    onPressed: () {
-    setState(() {
-    obscureText = !obscureText;
-    });
-    },
-    icon: Icon(
-    obscureText
-    ? Icons.visibility
-        : Icons.visibility_off,
-    ),
-    ),
-    ),
-    onFieldSubmitted: (value) async {
-    FocusScope.of(context)
-        .requestFocus(_repeatPasswordFocusNode);
-    },
-    validator: (value) {
-    return MyValidators.passwordValidator(value);
-    },
-    ),
-    const SizedBox(
-    height: 16.0,
-    ),
-    TextFormField(
-    controller: _repeatPasswordController,
-    focusNode: _repeatPasswordFocusNode,
-    textInputAction: TextInputAction.done,
-    keyboardType: TextInputType.visiblePassword,
-    obscureText: obscureText,
-    decoration: InputDecoration(
-    hintText: "Repeat password",
-    prefixIcon: const Icon(
-    IconlyLight.lock,
-    ),
-    suffixIcon: IconButton(
-    onPressed: () {
-    setState(() {
-    obscureText = !obscureText;
-    });
-    },
-    icon: Icon(
-    obscureText
-    ? Icons.visibility
-        : Icons.visibility_off,
-    ),
-    ),
-    ),
-    onFieldSubmitted: (value) async {
-    await _registerFCT();
-    },
-    validator: (value) {
-    return MyValidators.repeatPasswordValidator(
-    value: value,
-    password: _passwordController.text,
-    );
-    },
-    ),
-    const SizedBox(
-    height: 36.0,
-    ),
-      SizedBox(
-        width: double.infinity,
-        child: ElevatedButton.icon(
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.all(12.0),
-            // backgroundColor: Colors.red,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                12.0,
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Form(
+                    key: _formkey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextFormField(
+                          controller: _nameController,
+                          focusNode: _nameFocusNode,
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.name,
+                          decoration: const InputDecoration(
+                            hintText: 'Full Name',
+                            prefixIcon: Icon(
+                              Icons.person,
+                            ),
+                          ),
+                          onFieldSubmitted: (value) {
+                            FocusScope.of(context)
+                                .requestFocus(_emailFocusNode);
+                          },
+                          validator: (value) {
+                            return MyValidators.displayNamevalidator(value);
+                          },
+                        ),
+                        const SizedBox(
+                          height: 16.0,
+                        ),
+                        TextFormField(
+                          controller: _emailController,
+                          focusNode: _emailFocusNode,
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: const InputDecoration(
+                            hintText: "Email address",
+                            prefixIcon: Icon(
+                              IconlyLight.message,
+                            ),
+                          ),
+                          onFieldSubmitted: (value) {
+                            FocusScope.of(context)
+                                .requestFocus(_passwordFocusNode);
+                          },
+                          validator: (value) {
+                            return MyValidators.emailValidator(value);
+                          },
+                        ),
+                        const SizedBox(
+                          height: 16.0,
+                        ),
+                        TextFormField(
+                          controller: _passwordController,
+                          focusNode: _passwordFocusNode,
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.visiblePassword,
+                          obscureText: obscureText,
+                          decoration: InputDecoration(
+                            hintText: "***********",
+                            prefixIcon: const Icon(
+                              IconlyLight.lock,
+                            ),
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  obscureText = !obscureText;
+                                });
+                              },
+                              icon: Icon(
+                                obscureText
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
+                            ),
+                          ),
+                          onFieldSubmitted: (value) async {
+                            FocusScope.of(context)
+                                .requestFocus(_repeatPasswordFocusNode);
+                          },
+                          validator: (value) {
+                            return MyValidators.passwordValidator(value);
+                          },
+                        ),
+                        const SizedBox(
+                          height: 16.0,
+                        ),
+                        TextFormField(
+                          controller: _repeatPasswordController,
+                          focusNode: _repeatPasswordFocusNode,
+                          textInputAction: TextInputAction.done,
+                          keyboardType: TextInputType.visiblePassword,
+                          obscureText: obscureText,
+                          decoration: InputDecoration(
+                            hintText: "Repeat password",
+                            prefixIcon: const Icon(
+                              IconlyLight.lock,
+                            ),
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  obscureText = !obscureText;
+                                });
+                              },
+                              icon: Icon(
+                                obscureText
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
+                            ),
+                          ),
+                          onFieldSubmitted: (value) async {
+                            await _registerFCT();
+                          },
+                          validator: (value) {
+                            return MyValidators.repeatPasswordValidator(
+                              value: value,
+                              password: _passwordController.text,
+                            );
+                          },
+                        ),
+                        const SizedBox(
+                          height: 36.0,
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton.icon(
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.all(12.0),
+                              // backgroundColor: Colors.red,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                  12.0,
+                                ),
+                              ),
+                            ),
+                            icon: const Icon(IconlyLight.addUser),
+                            label: const Text("Sign up"),
+                            onPressed: () async {
+                              await _registerFCT();
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-          icon: const Icon(IconlyLight.addUser),
-          label: const Text("Sign up"),
-          onPressed: () async {
-            await _registerFCT();
-          },
         ),
       ),
-    ],
-    ),
-    ),
-    ],
-    ),
-    ),
-    ),
-
-        ),
-        );
-    }
+    );
+  }
 }
-

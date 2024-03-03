@@ -6,7 +6,6 @@ import 'package:lily_house/services/assets_manager.dart';
 import 'package:lily_house/widgets/products/products_widget.dart';
 import 'package:lily_house/widgets/titles_text.dart';
 import 'package:provider/provider.dart';
-
 import '../models/products_model.dart';
 class SearchScreen extends StatefulWidget {
   static const routeName = "/SearchScreen";
